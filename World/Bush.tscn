@@ -4,7 +4,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 7.0382
-height = 11.9454
+height = 8.73849
 
 [node name="StaticBody2D" type="StaticBody2D"]
 
