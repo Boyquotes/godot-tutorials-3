@@ -1,8 +1,11 @@
 extends Node2D
 
-func _process(delta):
-	if Input.is_action_just_pressed("attack"):
-		var grass_effect = load("Effects/GrassEffect.tscn").instance()
-		get_tree().current_scene.add_child(grass_effect)
-		grass_effect.global_position = global_position
-		queue_free()
+func create_grass_effect():
+	var grass_effect = load("Effects/GrassEffect.tscn").instance()
+	get_parent().add_child(grass_effect)
+	grass_effect.position = position
+	queue_free()
+
+func _on_Hurtbox_area_entered(area):
+	create_grass_effect()
+	queue_free()

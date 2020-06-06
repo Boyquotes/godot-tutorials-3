@@ -499,13 +499,14 @@ tile_data = PoolIntArray( -131069, 0, 3, -65533, 0, 65539, -65528, 0, 3, 3, 0, 6
 [node name="DirtCliffTileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
 cell_size = Vector2( 32, 32 )
+collision_mask = 0
 format = 1
 tile_data = PoolIntArray( -131066, 0, 0, -131065, 0, 1, -131064, 0, 2, -1, 0, 0, -65536, 0, 1, -65535, 0, 1, -65534, 0, 2, -65530, 0, 131072, -65529, 0, 131073, -65528, 0, 131074, 65535, 0, 65536, 0, 0, 65537, 1, 0, 65537, 2, 0, 65538, 131071, 0, 131072, 65536, 0, 131073, 65537, 0, 131073, 65538, 0, 196613, 65539, 0, 196610, 262147, 0, 0, 262148, 0, 1, 262149, 0, 2, 327683, 0, 65536, 327684, 0, 65537, 327685, 0, 65538, 393219, 0, 131072, 393220, 0, 131073, 393221, 0, 131074 )
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 104, 72 )
+position = Vector2( 144, 96 )
 
 [node name="Bushes" type="YSort" parent="YSort"]
 
