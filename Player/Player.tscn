@@ -1,10 +1,11 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.png" type="Texture" id=2]
 [ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/SwordHitbox.gd" type="Script" id=4]
 [ext_resource path="res://Overlap/Hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Shadows/MediumShadow.png" type="Texture" id=6]
 
 [sub_resource type="CapsuleShape2D" id=47]
 radius = 4.92166
@@ -291,7 +292,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 7 ]
+"values": [ 6 ]
 }
 
 [sub_resource type="Animation" id=56]
@@ -617,11 +618,15 @@ height = 3.87785
 collision_layer = 2
 script = ExtResource( 1 )
 
+[node name="MediumShadow" type="Sprite" parent="."]
+position = Vector2( -0.516411, 1.11501 )
+texture = ExtResource( 6 )
+
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -9 )
 texture = ExtResource( 2 )
 hframes = 60
-frame = 18
+frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.57079
@@ -648,7 +653,6 @@ anims/RunUp = SubResource( 63 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 34 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource( 64 )
 parameters/Attack/blend_position = Vector2( 0, 1 )
 parameters/Idle/blend_position = Vector2( 0, 1 )
