@@ -21,11 +21,12 @@ onready var sprite = $AnimatedSprite
 onready var stats = $Stats
 onready var player_detection_zone = $PlayerDetectionZone
 onready var hurtbox = $Hurtbox
+onready var soft_collision = $SoftCollision
 
 func _physics_process(delta):
 	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
-	knockback = move_and_slide(knockback)
 	
+	knockback = move_and_slide(knockback)
 	match state:
 		IDLE:
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
@@ -41,6 +42,9 @@ func _physics_process(delta):
 			else:
 				state = IDLE
 	
+	if soft_collision.is_colliding():
+		velocity += soft_collision.get_push_vector() * delta * 300
+		
 	velocity = move_and_slide(velocity)
 
 func seek_player():

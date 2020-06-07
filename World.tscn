@@ -699,17 +699,71 @@ position = Vector2( 32, 144 )
 [node name="Bat" parent="YSort/Bats" instance=ExtResource( 6 )]
 position = Vector2( 288, 16 )
 
-[node name="Bat2" parent="YSort/Bats" instance=ExtResource( 6 )]
-position = Vector2( 48, 128 )
+[node name="Bat11" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 24, 160 )
 
 [node name="Bat3" parent="YSort/Bats" instance=ExtResource( 6 )]
-position = Vector2( 16, 176 )
+position = Vector2( 19, 167 )
 
 [node name="Bat4" parent="YSort/Bats" instance=ExtResource( 6 )]
 position = Vector2( 304, 120 )
 
 [node name="Bat5" parent="YSort/Bats" instance=ExtResource( 6 )]
-position = Vector2( 304, 168 )
+position = Vector2( 248, 64 )
+
+[node name="Bat13" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 248, 64 )
+
+[node name="Bat14" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 248, 64 )
+
+[node name="Bat15" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 248, 64 )
+
+[node name="Bat16" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 248, 64 )
+
+[node name="Bat17" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 248, 64 )
+
+[node name="Bat18" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 248, 64 )
+
+[node name="Bat19" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 248, 64 )
+
+[node name="Bat20" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 248, 64 )
+
+[node name="Bat21" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 248, 64 )
+
+[node name="Bat22" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 248, 64 )
+
+[node name="Bat23" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 248, 64 )
+
+[node name="Bat24" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 248, 64 )
+
+[node name="Bat25" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 248, 64 )
+
+[node name="Bat26" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 248, 64 )
+
+[node name="Bat27" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 248, 64 )
+
+[node name="Bat28" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 248, 64 )
+
+[node name="Bat29" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 248, 64 )
+
+[node name="Bat30" parent="YSort/Bats" instance=ExtResource( 6 )]
+position = Vector2( 248, 64 )
 
 [node name="HealthUI" parent="." instance=ExtResource( 8 )]
 margin_left = 4.0
