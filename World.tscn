@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://World/Grass.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/Tree.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Camera2D.tscn" type="PackedScene" id=10]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -484,14 +485,21 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 0/z_index = 0
 
+[sub_resource type="SegmentShape2D" id=50]
+a = Vector2( 0, -40 )
+b = Vector2( 0, 320 )
+
 [node name="World" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 144, 96 )
-current = true
-zoom = Vector2( 0.8, 0.8 )
-smoothing_enabled = true
-smoothing_speed = 4.0
+[node name="Camera2D" parent="." instance=ExtResource( 10 )]
+position = Vector2( 136, 104 )
+zoom = Vector2( 0.9, 0.9 )
+
+[node name="TopLeft" parent="Camera2D/Limits" index="0"]
+position = Vector2( -32, -24 )
+
+[node name="BottomRight" parent="Camera2D/Limits" index="1"]
+position = Vector2( 320, 184 )
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 160, 91 )
@@ -504,7 +512,7 @@ region_rect = Rect2( 0, 0, 560, 416 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( -131069, 0, 3, -65533, 0, 65539, -65528, 0, 3, 3, 0, 65539, 8, 0, 65539, 131070, 0, 196608, 131071, 0, 196609, 65536, 0, 196609, 65537, 0, 196609, 65538, 0, 196609, 65539, 0, 196615, 65544, 0, 196612, 65545, 0, 196609, 65546, 0, 196609, 65547, 0, 196609, 65548, 0, 196609, 65549, 0, 196609, 65550, 0, 196609, 65551, 0, 196609, 65552, 0, 196609, 65553, 0, 196609, 65554, 0, 196609, 65555, 0, 196609, 65556, 0, 196610, 393215, 0, 0, 327680, 0, 1, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 327685, 0, 1, 327686, 0, 1, 327687, 0, 1, 327688, 0, 1, 327689, 0, 1, 327690, 0, 1, 327691, 0, 1, 327692, 0, 2, 458751, 0, 131072, 393216, 0, 131073, 393217, 0, 131073, 393218, 0, 131073, 393219, 0, 131073, 393220, 0, 65544, 393221, 0, 131073, 393222, 0, 131073, 393223, 0, 131073, 393224, 0, 131073, 393225, 0, 131073, 393226, 0, 131073, 393227, 0, 65542, 393228, 0, 65538, 458756, 0, 65539, 458763, 0, 131072, 458764, 0, 65543, 524292, 0, 65539, 524300, 0, 131076, 524301, 0, 1, 524302, 0, 1, 524303, 0, 1, 524304, 0, 1, 524305, 0, 1, 524306, 0, 1, 524307, 0, 1, 524308, 0, 2, 589828, 0, 65539, 589831, 0, 0, 589832, 0, 2, 589836, 0, 131072, 589837, 0, 131073, 589838, 0, 131073, 589839, 0, 131073, 589840, 0, 131073, 589841, 0, 131073, 589842, 0, 131073, 589843, 0, 131073, 589844, 0, 131074, 655364, 0, 65539, 655367, 0, 65536, 655368, 0, 65538, 720900, 0, 131075, 720903, 0, 65536, 720904, 0, 65538, 786439, 0, 131072, 786440, 0, 131074 )
+tile_data = PoolIntArray( -262136, 0, 3, -196600, 0, 65539, -131069, 0, 3, -131064, 0, 65539, -65533, 0, 65539, -65528, 0, 65539, 3, 0, 65539, 8, 0, 65539, 131070, 0, 196608, 131071, 0, 196609, 65536, 0, 196609, 65537, 0, 196609, 65538, 0, 196609, 65539, 0, 196615, 65544, 0, 196612, 65545, 0, 196609, 65546, 0, 196609, 65547, 0, 196609, 65548, 0, 196609, 65549, 0, 196609, 65550, 0, 196609, 65551, 0, 196609, 65552, 0, 196609, 65553, 0, 196609, 65554, 0, 196609, 65555, 0, 196609, 65556, 0, 196610, 393215, 0, 0, 327680, 0, 1, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 327685, 0, 1, 327686, 0, 1, 327687, 0, 1, 327688, 0, 1, 327689, 0, 1, 327690, 0, 1, 327691, 0, 1, 327692, 0, 2, 458751, 0, 131072, 393216, 0, 131073, 393217, 0, 131073, 393218, 0, 131073, 393219, 0, 131073, 393220, 0, 65544, 393221, 0, 131073, 393222, 0, 131073, 393223, 0, 131073, 393224, 0, 131073, 393225, 0, 131073, 393226, 0, 131073, 393227, 0, 65542, 393228, 0, 65538, 458756, 0, 65539, 458763, 0, 131072, 458764, 0, 65543, 524292, 0, 65539, 524300, 0, 131076, 524301, 0, 1, 524302, 0, 1, 524303, 0, 1, 524304, 0, 1, 524305, 0, 1, 524306, 0, 1, 524307, 0, 1, 524308, 0, 2, 589828, 0, 65539, 589831, 0, 0, 589832, 0, 2, 589836, 0, 131072, 589837, 0, 131073, 589838, 0, 131073, 589839, 0, 131073, 589840, 0, 131073, 589841, 0, 131073, 589842, 0, 131073, 589843, 0, 131073, 589844, 0, 131074, 655364, 0, 65539, 655367, 0, 65536, 655368, 0, 65538, 720900, 0, 131075, 720903, 0, 65536, 720904, 0, 65538, 786439, 0, 131072, 786440, 0, 131074 )
 
 [node name="DirtCliffTileMap" type="TileMap" parent="."]
 tile_set = SubResource( 49 )
@@ -516,7 +524,7 @@ tile_data = PoolIntArray( -131066, 0, 0, -131065, 0, 1, -131064, 0, 2, -1, 0, 0,
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 144, 96 )
+position = Vector2( 136, 104 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")
@@ -775,6 +783,26 @@ position = Vector2( 264, 72 )
 [node name="Bat30" parent="YSort/Bats" instance=ExtResource( 6 )]
 position = Vector2( 264, 72 )
 
+[node name="Boundaries" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2( -32, -32 )
+shape = SubResource( 50 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2( 328, -32 )
+shape = SubResource( 50 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2( 328, -24 )
+rotation = 1.5708
+shape = SubResource( 50 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2( 288, 184 )
+rotation = 1.5708
+shape = SubResource( 50 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 8 )]
@@ -782,3 +810,5 @@ margin_left = 4.0
 margin_top = 4.0
 margin_right = 64.0
 margin_bottom = 15.0
+
+[editable path="Camera2D"]
