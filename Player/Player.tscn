@@ -678,6 +678,9 @@ collision_layer = 4
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( -0.498249, -3.81992 )
 shape = SubResource( 47 )
+
+[node name="Timer" parent="Hurtbox" index="1"]
+one_shot = true
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 
 [editable path="HitboxPivot/SwordHitbox"]
