@@ -22,6 +22,7 @@ onready var stats = $Stats
 onready var player_detection_zone = $PlayerDetectionZone
 onready var hurtbox = $Hurtbox
 onready var soft_collision = $SoftCollision
+onready var wander_controller = $WanderController
 
 func _physics_process(delta):
 	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
@@ -29,16 +30,25 @@ func _physics_process(delta):
 	knockback = move_and_slide(knockback)
 	match state:
 		IDLE:
-			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 			seek_player()
+			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+			
+			if not wander_controller.get_time_left():
+				select_idle_or_wander_state()
 		WANDER:
-			pass
+			seek_player()
+			
+			if not wander_controller.get_time_left():
+				select_idle_or_wander_state()
+				
+			accelerate_towards_point(wander_controller.target_position, delta)
+			
+			if global_position.distance_to(wander_controller.target_position) <= 5:
+				select_idle_or_wander_state()
 		CHASE:
 			var player = player_detection_zone.player
 			if player != null:
-				var direction = (player.global_position - global_position).normalized()
-				velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
-				sprite.flip_h = velocity.x < 0
+				accelerate_towards_point(player.global_position, delta)
 			else:
 				state = IDLE
 	
@@ -46,11 +56,24 @@ func _physics_process(delta):
 		velocity += soft_collision.get_push_vector() * delta * 300
 		
 	velocity = move_and_slide(velocity)
-
+	
+func accelerate_towards_point(point, delta):
+	var direction = global_position.direction_to(point).normalized()
+	velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
+	sprite.flip_h = velocity.x < 0
+	
+func select_idle_or_wander_state():
+	state = pick_random_state([IDLE, WANDER])
+	wander_controller.start_wander_timer(rand_range(1, 3))
+	
 func seek_player():
 	if player_detection_zone.can_see_player():
 		state = CHASE
 
+func pick_random_state(state_list):
+	state_list.shuffle()
+	return state_list[0]
+	
 func _on_Hurtbox_area_entered(area):
 	stats.take_damage(area.damage)
 	knockback = area.knockback_vector * 110
